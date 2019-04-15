@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="svg/heart.svg" width="600"/>
+		<input type="button" id="btnOn" value="全屏显示" />
+		<input type="button" id="btnOff" value="退出全屏" />
+		<script type="text/javascript">
+			//全屏显示
+			//requestFullscreen() 请求全屏的方法
+			var btnon=document.getElementById("btnOn");
+			btnon.onclick=function () {
+				fullScreen();
+			};
+			
+			//can only be initiated by a user gesture. 只能通过用户点击事件调用
+			/*window.onload=function () {
+				fullScreen();
+			};*/
+			
+			var docElm = document.documentElement;
+			function fullScreen() {
+				//W3C  
+				if (docElm.requestFullscreen) {  
+				    docElm.requestFullscreen();  
+				}
+				//FireFox  
+				else if (docElm.mozRequestFullScreen) {  
+				    docElm.mozRequestFullScreen();  
+				}
+				//Chrome等  
+				else if (docElm.webkitRequestFullScreen) {  
+				    docElm.webkitRequestFullScreen();  
+				}
+				//IE11
+				else if (elem.msRequestFullscreen) {
+				  elem.msRequestFullscreen();
+				}
+			}
+			
+			//退出全屏
+			//exitFullscreen() 退出全屏方法     CancelFullScreen() 取消全屏方法
+			var btnoff=document.getElementById("btnOff");
+			btnoff.onclick=function () {
+				if (document.exitFullscreen) {  
+				    document.exitFullscreen();  
+				}  
+				else if (document.mozCancelFullScreen) {  
+				    document.mozCancelFullScreen();  
+				}  
+				else if (document.webkitCancelFullScreen) {  
+				    document.webkitCancelFullScreen();  
+				}
+				else if (document.msExitFullscreen) {
+				      document.msExitFullscreen();
+				}
+			};
+		</script>
+	</body>
+</html>
